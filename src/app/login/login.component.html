@@ -1,0 +1,77 @@
+<div class="row">
+  <div class="col-md-6 mx-auto">
+    <div class="card">
+      <div class="card-header">
+        <h4 class="display-5">Login Form</h4>
+      </div>
+      <div class="card-body">
+        <form class="row"  (ngSubmit)="onLogin()" autocomplete="off" id="formsection"
+          method="POST">
+          <div class="mb-3" id="email">
+            <label for="">Email Address<span style="color: red"> *</span></label>
+            <input type="text" id="email" name="email" [(ngModel)]="loginobj.email" class="form-control"
+              placeholder="Please enter your email id" maxlength="50" (keydown.space)="$event.preventDefault();"
+              (blur)="removeErrorMsg('email')" required>
+          </div>
+          <div class="mb-3" id="pass">
+            <label for="">Password<span style="color: red"> *</span></label>
+            <input type="password" name="password" [(ngModel)]="loginobj.password" class="form-control" required></div>
+             <p id="loginLink"><a class=" btn btn-primary" (click)="onLogin()" style="color: green;">Login </a>
+              <p>
+ </form>
+            </div>
+          </div>
+        </div>
+</div>
+             
+      <!-- </div> --> 
+<!-- <div class="row">
+  <div class="col-md-6 mx-auto">
+    <div class="card">
+      <div class="card-header">
+        <h4 class="display-5">Login with OTP</h4>
+      </div> -->
+                <!-- <div class="card-body">
+                  <form class="row" #loginForm="ngForm" (ngSubmit)="GetData(loginForm)" autocomplete="off" id="formsection"
+                    method="POST"> 
+              <div class="mb-3" id="email">
+                  <label for="">Email Address<span style="color: red"> *</span></label>
+                  <input type="text" id="email" name="email" [(ngModel)]="email" class="form-control"
+                    placeholder="Please enter your email id" maxlength="50" (keydown.space)="$event.preventDefault();"
+                    (blur)="removeErrorMsg('email')" required>
+                </div> -->
+                <!-- <div class="row">
+                  <div class="col-md-6 mx-auto">
+                    <div class="card">
+                      <div class="card-header">
+                        <h4 class="display-5">Logoin with OTP</h4>
+                      </div>
+                      <form class="row"  (ngSubmit)="onOtplogin()" autocomplete="off" id="formsection"
+                      method="POST">
+                     <div class="mb-3" id="email">
+            <label for="">Email Address<span style="color: red"> *</span></label>
+            <input type="text" id="email" name="email" [(ngModel)]="email.Otploginobj" class="form-control"
+              placeholder="Please enter your email id" maxlength="50" (keydown.space)="$event.preventDefault();"
+              (blur)="removeErrorMsg('email')" required>
+        </div>
+          <div class="row" id="Enterotp">
+            <label for="">Enter your OTP </label>
+            <div>
+              <p id="timer" style="color: crimson;" *ngIf="displayTimer"> Time Left : {{ display }}</p>
+            </div>
+            <input type="text" id="otp" name="otp" [(ngModel)]="otp.Otploginobj" class="form-control" maxlength="4"
+              (keypress)="numbersOnly($event)">
+          </div><br><br>
+          <div class="form-group text-center col-12" id="reOtp">
+            <button type="submit" id="resend" class="btn btn-primary" *ngIf="resendOtp" (click)="start(1)">Resend OTP</button>
+          </div> -->
+          <!-- <div class="form-group text-center col-12" id="sendOtp" >
+                <button type="submit" id="" class="btn btn-primary" (click)="sendOtp()" >Send OTP</button>
+              </div> -->
+          <!-- <div id="sachin">
+            <button type="submit" class=" btn btn-primary" (click)="sendOtp()">Send otp</button>
+          </div> -->
+
+          
+            <!-- <p id="loginStatus">{{loginStatus}}</p> -->
+        

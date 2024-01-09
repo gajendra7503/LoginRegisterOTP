@@ -1,0 +1,56 @@
+<div class="row">
+    <div class="col-md-6 mx-auto">
+      <div class="card">
+        <div class="card-header">
+          <h2 class="display-5">Login with OTP</h2>
+        </div>
+<div class="card-body">
+    <form class="formbox" #OtpForm="ngForm" (ngSubmit)="OtpLogin(OtpForm)" autocomplete="off">
+      <div class="form-group">
+  <label for="">EMAIL ADDRESS</label>
+  <input type="text" placeholder="Enter your email address here" required
+  (keydown.space)="$event.preventDefault();" id="emailAddress" name="emailAddress" [(ngModel)]="emailAddress"
+  maxlength="50" (blur)="removeErrorMsg('emailAddress')" class="form-control">
+  <div class="text-danger" *ngIf="emailValidateMessage2 == 'invalid'">
+  Invalid email id
+  </div>
+  <div class="text-danger" *ngIf="emailValidateMessage2 == 'required'">
+  Email id is mandatory
+  </div>
+      </div>
+      <div class="row" id="Enterotp">
+        <label for="">Enter your OTP </label>
+        <div>
+          <p id="timer" style="color: crimson;" *ngIf="displayTimer"> Time Left : {{ display }}</p>
+        </div>
+        <input type="text" id="otp" name="otp" [(ngModel)]="otp" class="form-control" maxlength="6"
+          (keypress)="numbersOnly($event)">
+          <div class="text-danger" *ngIf="OtpValidateMessage == 'lengthError'">
+            Invalid full OTP
+        </div>
+        <div class="text-danger" *ngIf="OtpValidateMessage == 'required'">
+            OTP is mandatory
+        </div>
+    </div>
+      <br><br>
+      <!-- <div class="form-group text-center col-12" id="reOtp">
+        <button type="submit" id="resend" class="btn btn-primary" *ngIf="resendOtp" (click)="start(1)">Resend OTP</button>
+      </div>  -->
+      <!-- <div class="form-group text-center col-12" id="sendOtp" >
+            <button type="submit" id="" class="btn btn-primary" (click)="sendOtp()" >Send OTP</button>
+          </div> -->
+       <div id="sachin">
+        <button type="submit" class=" btn btn-primary"(click)="sendOtp()">Send otp</button>
+      </div>
+  
+  <div class="form-group text-center" id="loginbtn">
+  <button class="btn"  class="btn btn-primary" id="continue_btn" (click)="checkValidationMsg2(OtpForm)">Login</button>
+  </div>
+  <div class="form-group text-center col-12" id="loginlink">
+    <p><a class="nav-link active" [routerLink]="['/user-login']" style="color: green;">Login with password</a> </p>
+</div>
+  </form>
+  </div>
+</div>
+</div>
+</div>

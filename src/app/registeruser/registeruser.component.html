@@ -1,0 +1,149 @@
+<div class="row">
+	<div class="col-md-6 mx-auto">
+	  <div class="card">
+		<div class="card-header">
+		  <h2 class="display-5">Registration Form</h2>
+		</div>
+		<div class="card-body" id="register">
+		  <form
+			name="form"
+			#registerForm="ngForm"
+			(ngSubmit)="registerForm.form.valid && onSubmit()"
+			novalidate
+			[appMatchPassword]="['password', 'confirmPassword']"
+		  >
+			<div class="mb-3">
+			  <label for="">Name<span style="color: red"> *</span></label>
+			  <input type="text" id="name" name="name" [(ngModel)]="registerUserobj.name" class="form-control"
+				  placeholder="Please enter name" (blur)="removeErrorMsg('name')" maxlength="40"
+				  (keypress)="alphaOnly($event)">
+			  <div class="text-danger" *ngIf="nameValidateMessage == 'lengthError'">
+				  Invalid full name
+			  </div>
+			  <div class="text-danger" *ngIf="nameValidateMessage == 'required'">
+				  Full name is mandatory
+			  </div>
+		  </div>
+		  <div class="mb-3">
+			  <label for="">Email Address<span style="color: red"> *</span></label>
+			  <input type="text" id="email" name="email" [(ngModel)]="registerUserobj.email" class="form-control"
+			  placeholder="Please enter your email id" maxlength="50"
+			  (keydown.space)="$event.preventDefault();" (blur)="removeErrorMsg('email')">
+		  <div class="text-danger" *ngIf="emailValidateMessage == 'invalid'">
+			  Invalid email id
+		  </div>
+		  <div class="text-danger" *ngIf="emailValidateMessage == 'required'">
+			  Email id is mandatory
+		  </div>
+		  </div>
+		  <div class="mb-3">
+			  <label for="">Mobile Number<span style="color: red"> *</span></label>
+			  <input type="text" (keydown.space)="$event.preventDefault();" id="mobile"
+				  name="mobile" [(ngModel)]="registerUserobj.mobile" class="form-control"
+				  placeholder="Please enter your mobile number" minlength="10" maxlength="10"
+				  pattern="[6789][0-9]{9}" (blur)="removeErrorMsg('mobile')"
+				  (keypress)="numbersOnly($event)">
+			  <div class="text-danger" *ngIf="mobileValidateMessage == 'lengthError'">
+				  10 digit mobile number is mandatory
+			  </div>
+			  <div class="text-danger" *ngIf="mobileValidateMessage == 'invalid'">
+				  Invalid mobile number
+			  </div>
+			  <div class="text-danger" *ngIf="mobileValidateMessage == 'required'">
+				  Mobile number is mandatory
+			  </div>
+		  </div>
+  
+		  <!-- <div class="mb-3">
+			<label for="">Password<span style="color: red"> *</span></label>
+			<input type="password" id="password" name="password" [(ngModel)]="password" class="form-control"
+				placeholder="Please enter Password" (blur)="removeErrorMsg('password')" maxlength="8" 
+				>
+			
+		</div> -->
+		<div class="mb-3">
+		<label for="">Password<span style="color: red"> *</span></label>
+		<input
+		type="password"
+		class="form-control"
+		name="password"
+		[(ngModel)]="registerUserobj.password"
+		required
+		minlength="6"
+		maxlength="12"
+		#password="ngModel"
+		[ngClass]="{ 'is-invalid': registerForm.submitted && password.errors }"
+	  />
+	  <div *ngIf="registerForm.submitted && password.errors" class="invalid-feedback">
+		<div *ngIf="password.errors['required']">Password is required</div>
+		<div *ngIf="password.errors['minlength']">
+		  Password must more than 6 characters
+		</div>
+		<div *ngIf="password.errors['maxlength']">
+		  Password must be at least 12 characters
+		</div>
+	  </div> 
+	</div>
+		<!-- <div class="mb-3">
+		  <label for="">Confirm Password<span style="color: red"> *</span></label>
+		  <input type="password" id="cnfpassword" name="cnfpassword" [(ngModel)]="cnfpassword" class="form-control"
+			  placeholder="confirm Password" (blur)="removeErrorMsg('cnfpassword')" maxlength="8"
+			 >
+		  
+	  </div> -->
+	  <div class="mb-3">
+	  <label for="">Confirm Password<span style="color: red"> *</span></label>   
+	  <input
+		  type="password"
+		  class="form-control"
+		  name="confirmPassword"
+		  minlength="6"
+		  maxlength="12"
+		  [(ngModel)]="registerUserobj.confirmPassword"
+		  required
+		  #confirmPassword="ngModel"
+		  [ngClass]="{ 'is-invalid': registerForm.submitted && confirmPassword.errors }"
+		/>
+		<div
+		  *ngIf="registerForm.submitted && confirmPassword.errors"
+		  class="invalid-feedback"
+		>
+		  <div *ngIf="confirmPassword.errors['required']">
+			Confirm Password is required
+		  </div>
+		  <div *ngIf="confirmPassword.errors['matching']">
+			Confirm Password does not match
+		  </div>
+		</div>
+	  </div>
+	  
+	  <div class="form-group text-center col-12">
+			<button type="submit" class="btn btn-primary" id="continue_btn" (click)="checkValidationMsg(registerForm)">Register</button>
+		  </div>
+		  <div class="form-group text-center col-12">
+		  <!-- <li class="nav-item"> -->
+			<p><a class="nav-link active" [routerLink]="['/user-login']" style="color: green;">Click here For Login</a> </p>
+			<!-- <a class="nav-link active" [routerLink]="['/login']"
+			  >Login Form</a -->
+		  </div>
+		  <!-- </li> -->
+		  
+		  </form>
+  
+  
+  
+		 
+		</div>
+	  </div>
+	</div>
+  </div> 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  

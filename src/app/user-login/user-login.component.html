@@ -1,0 +1,52 @@
+ <div class="row">
+    <div class="col-md-6 mx-auto">
+      <div class="card">
+        <div class="card-header">
+            <h3 class="display-5">Login Form</h3>
+          </div>
+          <div class="card-body">
+<form class="formbox" #login="ngForm" (ngSubmit)="LoginUser(login)" autocomplete="off">
+              <div class="form-group">
+                   <label for="">EMAIL ADDRESS</label>
+      <input type="text" placeholder="Enter your email address here"
+          (keydown.space)="$event.preventDefault();" id="emailAddress" name="emailAddress" [(ngModel)]="loginobj.emailAddress"
+          maxlength="50" (blur)="removeErrorMsg('emailAddress')" class="form-control">
+      <div class="text-danger" *ngIf="emailValidateMessage == 'invalid'">
+          Invalid email id
+      </div>
+      <div class="text-danger" *ngIf="emailValidateMessage == 'required'">
+          Email id is mandatory
+      </div>
+              </div>
+              <div class="form-group">
+                  <label for="name">Password</label>
+      <input type="text" placeholder="Please enter your Password" id="password" name="password"
+          [(ngModel)]="loginobj.password" (blur)="removeErrorMsg('password')" maxlength="40" class="form-control">
+      <div class="text-danger" *ngIf="PasswordValidateMessage == 'lengthError'">
+          Invalid Password. Please try again
+      </div>
+      <div class="text-danger" *ngIf="PasswordValidateMessage == 'required'">
+         Password is mandatory. Please try again
+      </div>
+  </div>
+  <div class="form-group text-center">
+      <button class="btn"  class="btn btn-primary" id="continue_btn" (click)="checkValidationMsg(login)">Login</button>
+  </div>
+ <div class="form-group text-center col-12">
+     <p><a class="nav-link active" [routerLink]="['/otpform']" style="color: green;">Login With OTP</a> </p>
+</div>
+  </form>
+</div>
+</div>
+</div> 
+
+
+
+
+
+
+
+
+
+
+
